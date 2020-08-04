@@ -58,3 +58,62 @@ if(!function_exists ('settings')){
         return $re;
     }
 }
+
+
+
+
+if(!function_exists ('throwError')){
+
+    function throwError($msg){
+
+        $responseData=[
+            'status'=>422,
+            'ResponseResult'=>false,
+            'ResponseMessage'=>$msg
+        ];
+        return response()->json($responseData,$responseData['status']);
+    }
+
+
+}
+
+if(!function_exists ('throwData')){
+
+    function throwData($msg,$data=[]){
+
+        $responseData=[
+            'status'=>200,
+            'ResponseResult'=>true,
+            'ResponseMessage'=>$msg,
+            'ResponseData'=>$data,
+        ];
+        return response()->json($responseData,$responseData['status']);
+    }
+
+
+}
+if(!function_exists ('toJson')){
+
+    function toJson($columns,$data=[]){
+        foreach ($columns as $c) {
+            if (gettype($data[$c]) == 'array') $data[$c] = json_encode($data[$c],true);
+
+        }
+        return $data;
+
+    }
+
+
+}
+if(!function_exists ('toArray')){
+
+    function toArray($columns,$data=[]){
+        foreach ($columns as $c){
+            if(gettype($data[$c])=='string')$data[$c]=json_decode($data[$c],true);
+        }
+        return $data;
+
+    }
+
+
+}
