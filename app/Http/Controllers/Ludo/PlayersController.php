@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ludo;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Ludo\Admin\Api;
 use App\Http\Requests\Ludo\Users\Add;
 use App\Http\Requests\Ludo\Users\Edit;
 use App\Http\Requests\Ludo\Users\Login;
@@ -39,4 +40,13 @@ class PlayersController extends Controller
         return \App\Helper\Players::loginPlayer($r->all());
 
     }
+
+    public function all(Api $r){
+        return \App\Helper\Players::allPlayer($r->all());
+
+    }
+
+
+
+
 }

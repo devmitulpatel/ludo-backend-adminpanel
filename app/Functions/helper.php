@@ -117,3 +117,30 @@ if(!function_exists ('toArray')){
 
 
 }
+
+
+if(!function_exists ('encode')){
+    function encode($str){
+        return \App\Helper\Encrypter::encode($str);
+    }
+
+}
+
+if(!function_exists ('decode')){
+    function decode($str){
+        return \App\Helper\Encrypter::decode($str);
+    }
+
+}
+if(!function_exists ('encodeLimit')){
+    function encodeLimit($str){
+        return \App\Helper\Encrypter::encodeLimit($str);
+    }
+
+}
+if(!function_exists ('decodeLimit')){
+    function decodeLimit($str){
+        return \App\Helper\Encrypter::decodeLimit($str);
+    }
+
+}

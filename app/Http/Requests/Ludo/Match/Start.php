@@ -5,9 +5,21 @@ namespace App\Http\Requests\Ludo\Match;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Request;
 
 class Start extends FormRequest
 {
+
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(Request $r)
+    {
+        return \App\Helper\Gate::checkUserToken($r);
+    }
     /**
      * Determine if the user is authorized to make this request.
      *

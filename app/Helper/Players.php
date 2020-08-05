@@ -72,10 +72,23 @@ class Players
             if(array_key_exists($c,$user))$outUser[$c]=$user[$c];
 
         }
-        $outUser['apiToken']=$apiToken;
+        $outUser['apiToken']=encodeLimit($apiToken);
         return ($loginStatus)?throwData(['Player Logged in successfully.'],$outUser):throwError(['Error: Player credentials not matched.']);
 
     }
+
+
+    public static function allPlayer($data){
+        $m=self::getPlayerModel();
+        $userData=$m->select('id','username','email','mobile','currentBalance')->get();
+        $allUser=($userData->count()>0)?$userData->toArray():[];
+        return throwData(['All Player Fetched successfully'],$allUser);
+
+
+
+    }
+
+
 
 
     private static function getPlayerModel(){
@@ -84,6 +97,9 @@ class Players
     }
 
     public static function _PlayerModel(){
+
+
+
         return self::getPlayerModel();
     }
 

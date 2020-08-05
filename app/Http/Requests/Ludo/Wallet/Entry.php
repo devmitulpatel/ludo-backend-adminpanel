@@ -5,6 +5,7 @@ namespace App\Http\Requests\Ludo\Wallet;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Request;
 
 class Entry extends FormRequest
 {
@@ -13,9 +14,9 @@ class Entry extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(Request $r)
     {
-        return true;
+        return \App\Helper\Gate::checkUserToken($r);
     }
 
     /**

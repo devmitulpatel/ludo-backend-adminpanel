@@ -29,6 +29,8 @@ Route::middleware('api')->group(function () {
                     Route::post('/create', 'Ludo\PlayersController@create')->name('player.create');
                     Route::post('/edit', 'Ludo\PlayersController@edit')->name('player.edit');
                     Route::post('/login', 'Ludo\PlayersController@login')->name('player.login');
+                    Route::post('/all', 'Ludo\PlayersController@all')->name('player.all');
+
 
                     Route::prefix('wallet')->group(function () {
 
